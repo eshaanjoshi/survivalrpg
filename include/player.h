@@ -3,7 +3,7 @@
 #include <SDL2/SDL.h>
 #include "vector.h"
 #include "sprite.h"
-extern char keypressed[322];
+#include "event_handler.h"
 enum direction
 {
     UP = 0,
@@ -15,9 +15,10 @@ enum direction
 
 
 void player_handler(sprite *player, vectorf *location);
-void player_event_handler(SDL_Event *e);
+//void player_event_handler(SDL_Event *e);
 void set_zero(enum direction D);
 void set_x_zero();
 void set_y_zero();
 sprite *create_player(vector *locat, vector *dim);
+void update_mv();
 #endif

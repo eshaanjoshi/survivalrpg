@@ -1,7 +1,14 @@
 #include "player.h"
 #include "defines.h"
 static char mv[4];
-char keypressed[322];
+
+void update_mv()
+{
+    mv[LEFT] = keypressed[SDL_SCANCODE_A];
+    mv[RIGHT] = keypressed[SDL_SCANCODE_D];
+    mv[UP] = keypressed[SDL_SCANCODE_W];
+    mv[DOWN] = keypressed[SDL_SCANCODE_S];
+}
 
 void set_x_zero()
 {
@@ -22,6 +29,7 @@ void set_zero(enum direction D)
 
 void player_handler(sprite *player, vectorf *location)
 {
+    
     vectorf change = {mv[RIGHT] - mv[LEFT], mv[DOWN] - mv[UP]};
     norm(&change);
     location->x += STEP * change.x / FRAME_RATE;
@@ -32,25 +40,6 @@ void player_handler(sprite *player, vectorf *location)
     player->box->y = new_loc.y;
 }
 
-
-void player_event_handler(SDL_Event *e)
-{
-    if (e->type == SDL_QUIT)
-    {
-        exit(1);
-    }
-    else if (e->type == SDL_KEYDOWN)
-    {
-        keypressed[e->key.keysym.scancode] = 1;   
-    }
-    else if (e->type == SDL_KEYUP){
-        keypressed[e->key.keysym.scancode] = 0;
-    }
-    mv[UP] = keypressed[SDL_SCANCODE_W];
-    mv[DOWN] = keypressed[SDL_SCANCODE_S];
-    mv[LEFT] = keypressed[SDL_SCANCODE_A];
-    mv[RIGHT] = keypressed[SDL_SCANCODE_D];
-}
 
 sprite *create_player(vector *locat, vector *dim)
 {

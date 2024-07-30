@@ -18,7 +18,6 @@ void handle_types(list *temp, int id)
             if(((text*)temp->val)->enabled == 1)
             {
                 SDL_RenderCopy(renderer, ((text*)temp->val)->texture, NULL, ((text*)temp->val)->box);
-
             }
             break;
         default:

@@ -12,6 +12,7 @@
 #include "collision.h"
 #include "render.h"
 #include "window.h"
+#include "event_handler.h"
 
 int main(int argc, char *argv[])
 {
@@ -71,8 +72,9 @@ int main(int argc, char *argv[])
         SDL_Event e;
         while (SDL_PollEvent(&e) != 0)
         {
-            player_event_handler(&e);
+            event_handler(&e);
         }
+        update_mv();
         SDL_RenderClear(renderer);
         do_collision(stack);
         player_handler(player, &location);
