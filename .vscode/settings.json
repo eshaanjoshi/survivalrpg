@@ -3,6 +3,7 @@
         "stdbool.h": "c",
         "stdio.h": "c",
         "collision.h": "c",
-        "sdl.h": "c"
+        "sdl.h": "c",
+        "numbers": "c"
     }
 }

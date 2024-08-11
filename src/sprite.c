@@ -20,3 +20,15 @@ sprite *create_sprite(vector *locat, vector *dim)
     obj->sprite_type = WALL_T;
     return obj;
 }
+
+sprite *create_item(vector *locat, vector *dim, int iid)
+{
+    SDL_Rect *texr = create_texture(locat, dim);
+    sprite *obj = (sprite*)malloc(sizeof(sprite));
+    obj->box = texr;
+    obj->texture_id = iid;
+    obj->sprite_type = INTERACTABLE_T;
+    //obj->t = (item_t*)malloc(sizeof(item_t));
+    //obj->t->name = "test";
+    return obj;
+}

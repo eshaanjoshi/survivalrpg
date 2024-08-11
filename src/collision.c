@@ -17,6 +17,11 @@ void collide_with_all(sprite *obj, stack_t *s)
         SDL_Rect intersect;
         if(SDL_IntersectRect(obj->box, ((sprite*)(temp->val))->box, &intersect)==SDL_TRUE)
         {
+            if(((sprite*)(temp->val))->sprite_type == INTERACTABLE_T)
+            {
+                temp = temp->next;
+                continue;
+            }
             if(intersect.w > intersect.h)
             {
                 printf("horizontal\n");

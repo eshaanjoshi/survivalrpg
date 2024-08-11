@@ -17,6 +17,9 @@ void handle_types(list *temp, int id)
             modify_enabled(((text*)temp->val));
             if(((text*)temp->val)->enabled == 1)
             {
+                SDL_SetTextureBlendMode(library[((text*)temp->val)->background], SDL_BLENDMODE_BLEND);
+                SDL_SetTextureAlphaMod(library[((text*)temp->val)->background], ((text*)temp->val)->alpha);
+                SDL_RenderCopy(renderer, library[((text*)temp->val)->background], NULL, ((text*)temp->val)->box);
                 SDL_RenderCopy(renderer, ((text*)temp->val)->texture, NULL, ((text*)temp->val)->box);
             }
             break;
